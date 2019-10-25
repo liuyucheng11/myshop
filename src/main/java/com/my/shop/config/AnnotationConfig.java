@@ -3,7 +3,6 @@ package com.my.shop.config;
 import com.my.shop.config.annotation.MonitorConfig;
 import com.my.shop.config.annotation.PermissionConfig;
 import com.my.shop.config.annotation.TokenConfig;
-import com.my.shop.config.interceptor.CommonInterceptor;
 import com.my.shop.utils.HelperUtils;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Locale;
 
 /**
  * @author liu.yucheng
