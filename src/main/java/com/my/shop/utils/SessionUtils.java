@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
  * @version 1.0
  */
 public class SessionUtils {
-    private static RedisUtil redisUtil;
+    private static volatile RedisUtil redisUtil;
     private static final long ONE_DAY = 24 * 3600;
     private static final long TEN_DAY = 24 * 3600 * 10;
 
