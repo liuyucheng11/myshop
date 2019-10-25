@@ -29,7 +29,11 @@ public class AnnotationConfig {
     //请求是否获得锁
     private boolean lock = false;
 
-
+    /**
+     * 根据注解类型反射执行set方法
+     * @param annotation 注解对象
+     * @return
+     */
     public AnnotationConfig builder(Annotation annotation) {
         Field[] fields = this.getClass().getDeclaredFields();
         for (Field field : fields) {

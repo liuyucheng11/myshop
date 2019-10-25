@@ -2,6 +2,8 @@ package com.my.shop.utils;
 
 import com.my.shop.context.RequestContext;
 import com.my.shop.context.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 /**
@@ -15,6 +17,8 @@ public class SessionUtils {
     private static volatile RedisUtil redisUtil;
     private static final long ONE_DAY = 24 * 3600;
     private static final long TEN_DAY = 24 * 3600 * 10;
+    private static final Logger logger = LoggerFactory.getLogger(SessionUtils.class);
+
 
     public static Session getSession(String id) {
         RedisUtil redisUtil = getRedis();
@@ -37,7 +41,9 @@ public class SessionUtils {
         if (redisUtil == null) {
             synchronized (SpringContextUtil.class) {
                 if (redisUtil == null) {
+                    logger.info("【------开始redis注入------】");
                     redisUtil = (RedisUtil) SpringContextUtil.getBean("redis");
+                    logger.info("【------redis注入完成------】");
                 }
             }
         }
