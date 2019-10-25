@@ -27,6 +27,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (config == null) {
             return true;
         }
+        if (!config.needLogin()) {
+            return true;
+        }
         if (config.needLogin() && session.getLoginUser() != null) {
             return true;
         } else {

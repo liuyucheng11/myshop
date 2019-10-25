@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
- * 拦截器实现防止短时间内重复提交
+ * 1.拦截器实现防止短时间内重复提交
  * 基于redis实现,默认过期时间为200ms，前台请求传入时，后台对应同一用户生成token，
  * token生成规则为当前 <tt>会话用户id + "_" + 请求uri</tt>，针对短时间内重复请求同一 url，只有第一个获得锁的请求，可进行业务处理
  * 否则刷新redis锁存在时间，此拦截器预处理返回false
  * 只有获得redis锁并且业务结束后，在完成请求后释放锁
- * 同时@TokenConfig可自定义redis锁过期时间
+ * 2.同时@TokenConfig可自定义redis锁过期时间
+ * 3.配合@Monitorconfig使用，否则会出现空指针异常
  * </p>
  *
  * @author liu.yucheng
