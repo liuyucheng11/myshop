@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,20 +52,12 @@ public class RequestContext {
      * @param invokeMethod
      */
     public static void initRequestMonitor(Method invokeMethod, String url) {
-        MonitorConfig config = invokeMethod.getAnnotation(MonitorConfig.class);
-        PermissionConfig pConfig = invokeMethod.getAnnotation(PermissionConfig.class);
-        TokenConfig tokenConfig = invokeMethod.getAnnotation(TokenConfig.class);
+        Annotation[] declareAnnotations = invokeMethod.getAnnotations();
         AnnotationConfig annotationConfig = new AnnotationConfig();
+        for (Annotation annotation : declareAnnotations) {
+            annotationConfig.builder(annotation);
+        }
         annotationConfig.setUri(url);
-        if (config != null) {
-            annotationConfig.setMonitorConfig(config);
-        }
-        if (pConfig != null) {
-            annotationConfig.setPermissionConfig(pConfig);
-        }
-        if (tokenConfig != null) {
-            annotationConfig.setTokenConfig(tokenConfig);
-        }
         setAnnotationConfig(annotationConfig);
     }
 

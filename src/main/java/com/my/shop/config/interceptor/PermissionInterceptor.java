@@ -28,8 +28,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
             return true;
         }
         Set<String> role = RequestContext.getRequestLocal().getSession().getLoginUser().getPermission();
-        String[] need = config.needPermission();
-        Set<String> set = new HashSet<>(Arrays.asList(need));
+        Set<String> set = new HashSet<>(Arrays.asList(config.needPermission()));
         if (set.isEmpty()) {
             return true;
         }
