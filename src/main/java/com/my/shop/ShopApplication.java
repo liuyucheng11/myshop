@@ -25,7 +25,7 @@ public class ShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopApplication.class, args);
     }
-    public static final String transactionExecution = "execution (* com.shop.modules.*.service.impl.*.*(..))";
+    public static final String transactionExecution = "execution (* com.shop.modules.*.service.impl.*(..))";
     @Autowired
     private DataSource dataSource;
     //声明式事务

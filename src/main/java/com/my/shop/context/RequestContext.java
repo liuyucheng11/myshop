@@ -74,7 +74,7 @@ public class RequestContext {
         loginUser.set(loginUser1);
     }
 
-    public static void setAnnotationConfig(AnnotationConfig config) {
+    private static void setAnnotationConfig(AnnotationConfig config) {
         annotationConfig.set(config);
     }
 
