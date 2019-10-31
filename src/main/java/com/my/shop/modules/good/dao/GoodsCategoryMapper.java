@@ -1,9 +1,7 @@
 package com.my.shop.modules.good.dao;
 
 import com.my.shop.modules.good.pojo.GoodsCategory;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface GoodsCategoryMapper {
     int deleteByPrimaryKey(Long id);
 
