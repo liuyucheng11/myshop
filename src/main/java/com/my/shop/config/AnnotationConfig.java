@@ -32,7 +32,7 @@ public class AnnotationConfig {
     /**
      * 根据注解类型反射执行set方法
      * @param annotation 注解对象
-     * @return
+     * @return annotationConfig
      */
     public AnnotationConfig builder(Annotation annotation) {
         Field[] fields = this.getClass().getDeclaredFields();

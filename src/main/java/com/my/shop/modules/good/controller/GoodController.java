@@ -2,7 +2,6 @@ package com.my.shop.modules.good.controller;
 
 import com.my.shop.common.Result;
 import com.my.shop.config.annotation.MonitorConfig;
-import com.my.shop.config.annotation.PermissionConfig;
 import com.my.shop.config.annotation.TokenConfig;
 import com.my.shop.modules.good.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +29,15 @@ public class GoodController {
         return new String("aaaa");
     }
 
-    @RequestMapping(value = "/deleteGoods", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteGoods")
     @MonitorConfig(needLogin = true)
-    @PermissionConfig(needPermission = {"deleteGoods","allGoodsPermission"})
-    public Result deleteGoods() {
+    @TokenConfig
+    public Object deleteGoods() {
 
-        return new Result();
+        return "删除商品";
     }
 
-    @RequestMapping(value = "/deleteGoods", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryPage", method = RequestMethod.GET)
     public Result getGoods(@RequestParam("currentPage") int currentPage, @RequestParam("pageSize") int pageSize) {
 
         return new Result();

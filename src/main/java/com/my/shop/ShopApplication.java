@@ -1,5 +1,6 @@
 package com.my.shop;
 
+import com.my.shop.config.command.StartCommand;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -23,26 +24,9 @@ import java.util.Properties;
 public class ShopApplication {
 
     public static void main(String[] args) {
+       // new StartCommand(args);
         SpringApplication.run(ShopApplication.class, args);
     }
-    public static final String transactionExecution = "execution (* com.shop.modules.*.service.impl.*(..))";
-    @Autowired
-    private DataSource dataSource;
-    //声明式事务
-    @Bean
-    public DefaultPointcutAdvisor defaultPointcutAdvisor() {
-        AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression(transactionExecution);
-        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
-        advisor.setPointcut(pointcut);
-        Properties attributes = new Properties();
-        attributes.setProperty("get*", "PROPAGATION_REQUIRED,-Exception");
-        attributes.setProperty("add*", "PROPAGATION_REQUIRED,-Exception");
-        attributes.setProperty("update*", "PROPAGATION_REQUIRED,-Exception");
-        attributes.setProperty("delete*", "PROPAGATION_REQUIRED,-Exception");
-        TransactionInterceptor txAdvice = new TransactionInterceptor(new DataSourceTransactionManager(dataSource), attributes);
-        advisor.setAdvice(txAdvice);
-        return advisor;
-    }
+
 
 }
