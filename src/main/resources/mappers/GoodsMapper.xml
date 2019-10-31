@@ -19,7 +19,7 @@
     modify_emp, remark
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_goods
     where id = #{id,jdbcType=BIGINT}
@@ -161,4 +161,11 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectPage" parameterType="com.my.shop.modules.good.pojo.Goods"
+          resultType="com.my.shop.modules.good.pojo.Goods">
+     select <include refid="Base_Column_List"></include>
+     from t_goods
+
+  </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.my.shop.modules.good.service;
 
 import com.my.shop.common.BaseService;
+import com.my.shop.common.QueryParam;
+import com.my.shop.common.ResultPage;
 import com.my.shop.modules.good.pojo.Goods;
 
 /**
@@ -9,5 +11,7 @@ import com.my.shop.modules.good.pojo.Goods;
  * @version 1.0
  */
 public interface GoodService extends BaseService<Goods> {
+
+    ResultPage getResultPage(QueryParam queryParam);
 
 }
